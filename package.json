@@ -48,7 +48,7 @@
     "vitest": "3.1.1"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
+    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "svelte-preprocess"]
   },
   "knip": {
     "svelte": {
@@ -66,5 +66,8 @@
     "ignore": [".ncurc.js"],
     "ignoreDependencies": [],
     "ignoreExportsUsedInFile": true
+  },
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
   }
 }
