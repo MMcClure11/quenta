@@ -14,7 +14,8 @@
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "check-updates": "npm-check-updates --cache"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3",
@@ -38,6 +39,7 @@
     "eslint-plugin-svelte": "^3.0.0",
     "globals": "^16.0.0",
     "jsdom": "^26.0.0",
+    "npm-check-updates": "17.1.18",
     "playwright": "^1.51.1",
     "storybook": "^8.6.12",
     "svelte": "^5.0.0",
