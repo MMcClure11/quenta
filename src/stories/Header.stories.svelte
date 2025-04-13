@@ -1,7 +1,6 @@
 <script module>
 import { defineMeta } from '@storybook/addon-svelte-csf'
 import Header from './Header.svelte'
-import { fn } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({
@@ -13,11 +12,7 @@ const { Story } = defineMeta({
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
-  args: {
-    onLogin: fn(),
-    onLogout: fn(),
-    onCreateAccount: fn(),
-  },
+  args: {},
 })
 </script>
 
