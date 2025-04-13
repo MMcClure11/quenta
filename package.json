@@ -15,9 +15,12 @@
     "test": "npm run test:unit -- --run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "check-updates": "npm-check-updates --cache"
+    "check-updates": "npm-check-updates --cache",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@chromatic-com/storybook": "^3",
     "@eslint/compat": "^1.2.5",
     "@eslint/js": "^9.18.0",
