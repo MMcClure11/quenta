@@ -12,3 +12,4 @@ cp .env.example .env
 docker compose up
 ```
 
+(if `docker compose` doesn't work, try `docker-compose`)
