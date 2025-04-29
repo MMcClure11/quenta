@@ -21,7 +21,8 @@
     "fmt": "$npm_execpath run format",
     "fmt:check": "$npm_execpath run format:check",
     "tidy": "$npm_execpath run format; $npm_execpath run lint",
-    "knip": "knip"
+    "knip": "knip",
+    "graphile-migrate": "env-cmd --silent graphile-migrate --config ./gmrc.cjs"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -36,9 +37,11 @@
     "@sveltejs/adapter-node": "5.2.12",
     "@sveltejs/kit": "2.20.7",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
+    "env-cmd": "10.1.0",
     "eslint": "9.25.0",
     "eslint-plugin-svelte": "3.5.1",
     "globals": "16.0.0",
+    "graphile-migrate": "1.4.1",
     "knip": "5.50.5",
     "npm-check-updates": "18.0.0",
     "storybook": "8.6.12",
@@ -50,11 +53,7 @@
     "vitest": "3.1.2"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "esbuild",
-      "svelte-preprocess"
-    ]
+    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "svelte-preprocess"]
   },
   "knip": {
     "svelte": {
@@ -62,25 +61,15 @@
         "./src/routes/**/+{layout,page,server,error}{,.server}.{svelte,ts}",
         "./svelte.config.js"
       ],
-      "project": [
-        "./src/**/*.ts"
-      ]
+      "project": ["./src/**/*.ts"]
     },
     "paths": {
-      "$lib/*": [
-        "src/lib/*"
-      ],
-      "$app/*": [
-        "node_modules/@sveltejs/kit/src/runtime/app/*"
-      ],
-      "$env/*": [
-        "node_modules/@sveltejs/kit/src/runtime/env/*"
-      ]
+      "$lib/*": ["src/lib/*"],
+      "$app/*": ["node_modules/@sveltejs/kit/src/runtime/app/*"],
+      "$env/*": ["node_modules/@sveltejs/kit/src/runtime/env/*"]
     },
-    "ignore": [
-      ".ncurc.js"
-    ],
-    "ignoreDependencies": [],
+    "ignore": [".ncurc.js"],
+    "ignoreDependencies": ["graphile-migrate"],
     "ignoreExportsUsedInFile": true
   },
   "dependencies": {
