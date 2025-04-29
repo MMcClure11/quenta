@@ -11,6 +11,9 @@ importers:
       modern-normalize:
         specifier: ^3.0.1
         version: 3.0.1
+      pg:
+        specifier: 8.15.6
+        version: 8.15.6
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -48,6 +51,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 5.0.3
         version: 5.0.3(svelte@5.28.1)(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2))
+      '@types/pg':
+        specifier: 8.11.14
+        version: 8.11.14
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
