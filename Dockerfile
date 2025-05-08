@@ -46,6 +46,7 @@ COPY --from=build \
   /app/package.json \
   /app/docker-app-start.sh \
   /app/gmrc.cjs \
+  /app/quenta-db.pem \
   /app/
 
 # Start the server by default, this can be overwritten at runtime

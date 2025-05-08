@@ -35,3 +35,10 @@ docker build -t quenta/app .
 ```sh
 docker run --rm --name quenta-app quenta/app
 ```
+
+## Database Connection
+
+We are using crunchybase
+
+Add `?ssl=true&sslrootcert=/app/crunchydb.pem` to the end of the connection
+string to ensure that SSL works as expected.
