@@ -8,8 +8,11 @@ importers:
 
   .:
     dependencies:
+      graphile-migrate:
+        specifier: 1.4.1
+        version: 1.4.1
       modern-normalize:
-        specifier: ^3.0.1
+        specifier: 3.0.1
         version: 3.0.1
       pg:
         specifier: 8.15.6
@@ -19,7 +22,7 @@ importers:
         specifier: 1.9.4
         version: 1.9.4
       '@chromatic-com/storybook':
-        specifier: ^3.2.6
+        specifier: 3.2.6
         version: 3.2.6(react@19.1.0)(storybook@8.6.12)
       '@eslint/compat':
         specifier: 1.2.9
@@ -66,9 +69,6 @@ importers:
       globals:
         specifier: 16.1.0
         version: 16.1.0
-      graphile-migrate:
-        specifier: 1.4.1
-        version: 1.4.1
       knip:
         specifier: 5.55.1
         version: 5.55.1(@types/node@22.15.16)(typescript@5.8.3)

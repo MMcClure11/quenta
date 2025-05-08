@@ -24,9 +24,14 @@
     "knip": "knip",
     "graphile-migrate": "env-cmd --silent graphile-migrate --config ./gmrc.cjs"
   },
+  "dependencies": {
+    "graphile-migrate": "1.4.1",
+    "modern-normalize": "3.0.1",
+    "pg": "8.15.6"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@chromatic-com/storybook": "^3.2.6",
+    "@chromatic-com/storybook": "3.2.6",
     "@eslint/compat": "1.2.9",
     "@eslint/js": "9.26.0",
     "@flydotio/dockerfile": "0.7.10",
@@ -42,7 +47,6 @@
     "eslint": "9.26.0",
     "eslint-plugin-svelte": "3.5.1",
     "globals": "16.1.0",
-    "graphile-migrate": "1.4.1",
     "knip": "5.55.1",
     "npm-check-updates": "18.0.1",
     "storybook": "8.6.12",
@@ -72,9 +76,5 @@
     "ignore": [".ncurc.js"],
     "ignoreDependencies": ["graphile-migrate"],
     "ignoreExportsUsedInFile": true
-  },
-  "dependencies": {
-    "modern-normalize": "^3.0.1",
-    "pg": "8.15.6"
   }
 }

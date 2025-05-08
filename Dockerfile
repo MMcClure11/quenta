@@ -46,8 +46,9 @@ COPY --from=build \
   /app/package.json \
   /app/docker-app-start.sh \
   /app/gmrc.cjs \
-  /app
+  /app/
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD [ "/app/docker-app-start.sh" ]
+CMD []
+ENTRYPOINT [ "/app/docker-app-start.sh" ]

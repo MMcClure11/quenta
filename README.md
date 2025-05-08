@@ -21,3 +21,17 @@ Create the `quenta` database:
 ```
 pnpm run graphile-migrate reset --erase
 ```
+
+## Docker
+
+### Build Docker Image Locally
+
+```sh
+docker build -t quenta/app .
+```
+
+### Run Docker Image Locally
+
+```sh
+docker run --rm --name quenta-app quenta/app
+```
