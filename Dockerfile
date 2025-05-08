@@ -41,6 +41,9 @@ COPY --from=build /app/build /app/build
 # Copy node_modules
 COPY --from=build /app/node_modules /app/node_modules
 
+# Copy db migrations
+COPY --from=build /app/migrations /app/migrations
+
 # Copy important files into project root
 COPY --from=build \
   /app/package.json \
