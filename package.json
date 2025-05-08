@@ -54,11 +54,7 @@
     "vitest": "3.1.3"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "esbuild",
-      "svelte-preprocess"
-    ]
+    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "svelte-preprocess"]
   },
   "knip": {
     "svelte": {
@@ -66,27 +62,15 @@
         "./src/routes/**/+{layout,page,server,error}{,.server}.{svelte,ts}",
         "./svelte.config.js"
       ],
-      "project": [
-        "./src/**/*.ts"
-      ]
+      "project": ["./src/**/*.ts"]
     },
     "paths": {
-      "$lib/*": [
-        "src/lib/*"
-      ],
-      "$app/*": [
-        "node_modules/@sveltejs/kit/src/runtime/app/*"
-      ],
-      "$env/*": [
-        "node_modules/@sveltejs/kit/src/runtime/env/*"
-      ]
+      "$lib/*": ["src/lib/*"],
+      "$app/*": ["node_modules/@sveltejs/kit/src/runtime/app/*"],
+      "$env/*": ["node_modules/@sveltejs/kit/src/runtime/env/*"]
     },
-    "ignore": [
-      ".ncurc.js"
-    ],
-    "ignoreDependencies": [
-      "graphile-migrate"
-    ],
+    "ignore": [".ncurc.js"],
+    "ignoreDependencies": ["graphile-migrate"],
     "ignoreExportsUsedInFile": true
   },
   "dependencies": {
