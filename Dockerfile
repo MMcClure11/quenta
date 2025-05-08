@@ -50,4 +50,4 @@ COPY --from=build \
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD [ "docker-app-start.sh" ]
+CMD [ "/app/docker-app-start.sh" ]
