@@ -22,7 +22,8 @@
     "fmt:check": "$npm_execpath run format:check",
     "tidy": "$npm_execpath run format; $npm_execpath run lint",
     "knip": "knip",
-    "graphile-migrate": "env-cmd --silent graphile-migrate --config ./gmrc.cjs"
+    "graphile-migrate": "env-cmd --silent graphile-migrate --config ./gmrc.cjs",
+    "kanel": "env-cmd -x kanel --database=\\$DATABASE_URL"
   },
   "dependencies": {
     "graphile-migrate": "1.4.1",
@@ -46,9 +47,12 @@
     "env-cmd": "10.1.0",
     "eslint": "9.26.0",
     "eslint-plugin-svelte": "3.5.1",
-    "globals": "16.1.0",
-    "knip": "5.55.1",
-    "npm-check-updates": "18.0.1",
+    "globals": "16.0.0",
+    "graphile-migrate": "1.4.1",
+    "kanel": "^3.14.1",
+    "kanel-kysely": "^0.7.1",
+    "knip": "5.50.5",
+    "npm-check-updates": "18.0.0",
     "storybook": "8.6.12",
     "svelte": "5.28.2",
     "svelte-check": "4.1.7",
@@ -76,5 +80,10 @@
     "ignore": [".ncurc.js"],
     "ignoreDependencies": ["graphile-migrate"],
     "ignoreExportsUsedInFile": true
+  },
+  "dependencies": {
+    "kysely": "^0.28.2",
+    "modern-normalize": "^3.0.1",
+    "pg": "8.15.6"
   }
 }
