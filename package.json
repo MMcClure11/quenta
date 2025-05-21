@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "graphile-migrate": "1.4.1",
+    "kysely": "0.28.2",
     "modern-normalize": "3.0.1",
     "pg": "8.15.6"
   },
@@ -49,8 +50,8 @@
     "eslint-plugin-svelte": "3.5.1",
     "globals": "16.0.0",
     "graphile-migrate": "1.4.1",
-    "kanel": "^3.14.1",
-    "kanel-kysely": "^0.7.1",
+    "kanel": "3.14.1",
+    "kanel-kysely": "0.7.1",
     "knip": "5.50.5",
     "npm-check-updates": "18.0.0",
     "storybook": "8.6.12",
@@ -80,10 +81,5 @@
     "ignore": [".ncurc.js"],
     "ignoreDependencies": ["graphile-migrate"],
     "ignoreExportsUsedInFile": true
-  },
-  "dependencies": {
-    "kysely": "^0.28.2",
-    "modern-normalize": "^3.0.1",
-    "pg": "8.15.6"
   }
 }

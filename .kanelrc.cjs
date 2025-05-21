@@ -14,7 +14,6 @@ const supportVerbatimModuleSyntaxHook = (filePath, lines) => {
 }
 
 module.exports = {
-  // ... your config here.
   schemas: ['public'],
   enumStyle: 'enum',
   outputPath: 'src/lib/__generated__/kanel',
