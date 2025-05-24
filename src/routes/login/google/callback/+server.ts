@@ -42,7 +42,10 @@ export async function GET(event: RequestEvent): Promise<Response> {
       status: 400,
     })
   }
-  const claims = decodeIdToken(tokens.idToken()) as { sub: string, name: string }
+  const claims = decodeIdToken(tokens.idToken()) as {
+    sub: string
+    name: string
+  }
   console.log(JSON.stringify(claims, null, 2))
   const googleUserId = claims.sub
   const username = claims.name
