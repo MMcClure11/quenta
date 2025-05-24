@@ -104,11 +104,11 @@ module.exports = {
    * evaluated (i.e. in watch mode).
    */
   afterCurrent: [
-    // {
-    //   "_": "command",
-    //   "shadow": true,
-    //   "command": "if [ \"$IN_TESTS\" = \"1\" ]; then ./scripts/test-seed; fi",
-    // },
+    {
+      _: 'command',
+      shadow: false,
+      command: 'pnpm run kanel',
+    },
   ],
 
   /*

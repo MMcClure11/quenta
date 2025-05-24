@@ -11,9 +11,9 @@ export default interface UserTable {
 
   email: ColumnType<string, string, string>;
 
-  createdAt: ColumnType<string, string, string>;
+  createdAt: ColumnType<number, number, number>;
 
-  updatedAt: ColumnType<string, string, string>;
+  updatedAt: ColumnType<number, number, number>;
 }
 
 export type User = Selectable<UserTable>;

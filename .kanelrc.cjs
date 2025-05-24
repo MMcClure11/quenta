@@ -21,4 +21,9 @@ module.exports = {
 
   preRenderHooks: [makeKyselyHook(), kyselyCamelCaseHook, generateIndexFile],
   postRenderHooks: [supportVerbatimModuleSyntaxHook],
+  customTypeMap: {
+    'pg_catalog.bytea': 'Uint8Array',
+    'pg_catalog.int8': 'number',
+    'pg_catalog.jsonb': 'Record<string, unknown>',
+  },
 }

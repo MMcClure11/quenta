@@ -6,6 +6,11 @@ import { env as privateEnv } from '$env/dynamic/private'
 
 type KyselyDb = Kysely<Database>
 
+// bigint → number
+pg.types.setTypeParser(20, (val) => {
+  return Number.parseInt(val, 10)
+})
+
 const getDb = once(() => {
   const databaseUrl = privateEnv.DATABASE_URL
   const db = new Kysely<Database>({
