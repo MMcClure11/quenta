@@ -14,6 +14,8 @@ export default interface UserTable {
   createdAt: ColumnType<number, number, number>;
 
   updatedAt: ColumnType<number, number, number>;
+
+  googleId: ColumnType<string, string, string>;
 }
 
 export type User = Selectable<UserTable>;

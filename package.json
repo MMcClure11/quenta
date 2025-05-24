@@ -28,6 +28,7 @@
   "dependencies": {
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
+    "arctic": "^3.7.0",
     "graphile-migrate": "1.4.1",
     "kysely": "0.28.2",
     "modern-normalize": "3.0.1",

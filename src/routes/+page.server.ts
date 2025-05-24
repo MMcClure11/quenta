@@ -4,7 +4,7 @@ import { getDb } from '$lib/server/db/get-db.js'
 
 const load = (async (event) => {
   const db = getDb()
-  console.log("session:", event.locals.session)
+  console.log('session:', event.locals.session)
 
   // const result = await db.query(
   //   `SELECT count(id) AS "userCount" FROM public.user`,
