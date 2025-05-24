@@ -6,6 +6,7 @@ import { sha256 } from '@oslojs/crypto/sha2'
 import type { UserSession } from '$lib/server/db/types.js'
 import type { UserId, UserSessionId } from '$lib/ids.js'
 import type { KyselyDb } from './db/get-db'
+import type { RequestEvent } from "@sveltejs/kit";
 
 type SessionValidationResult = { session: UserSession } | { session: undefined }
 
@@ -93,10 +94,30 @@ async function invalidateAllSessions(
     .execute()
 }
 
+function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: number): void {
+  event.cookies.set("session", token, {
+    httpOnly: true,
+    sameSite: "lax",
+    expires: new Date(expiresAt),
+    path: "/"
+  });
+}
+
+function deleteSessionTokenCookie(event: RequestEvent): void {
+  event.cookies.set("session", "", {
+    httpOnly: true,
+    sameSite: "lax",
+    maxAge: 0,
+    path: "/"
+  });
+}
+
 export {
   validateSessionToken,
   invalidateSession,
   invalidateAllSessions,
   generateSessionToken,
   createSession,
+  setSessionTokenCookie,
+  deleteSessionTokenCookie
 }
