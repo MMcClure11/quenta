@@ -1,10 +1,10 @@
 import { Google } from 'arctic'
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private'
+import { env as privateEnv } from '$env/dynamic/private'
 
 const google = new Google(
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  'http://localhost:5173/login/google/callback',
+  privateEnv.GOOGLE_CLIENT_ID,
+  privateEnv.GOOGLE_CLIENT_SECRET,
+  `${privateEnv.ORIGIN}/login/google/callback`,
 )
 
 export { google }
