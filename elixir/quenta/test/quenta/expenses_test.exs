@@ -6,6 +6,34 @@ defmodule Quenta.ExpensesTest do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Quenta.Repo)
   end
 
+  test "change_expense/2 returns a changeset for an existing expense" do
+    expense = %Quenta.Expenses.Expense{
+      id: 1,
+      description: "Test Expense",
+      amount_cents: 1000,
+      date: ~D[2023-10-01],
+      user_id: 1
+    }
+
+    changeset = Expenses.change_expense(expense, %{"description" => "Updated Expense"})
+    assert changeset.valid?
+    assert changeset.changes.description == "Updated Expense"
+  end
+
+  test "change_expense/2 return an invalid changeset when missing required fields" do
+    expense = %Quenta.Expenses.Expense{
+      id: 1,
+      description: "Test Expense",
+      amount_cents: 1000,
+      date: ~D[2023-10-01],
+      user_id: 1
+    }
+
+    changeset = Expenses.change_expense(expense, %{"description" => nil})
+    refute changeset.valid?
+    assert [description: {"can't be blank", _}] = changeset.errors
+  end
+
   test "create_expense/1 creates a new expense" do
     params = %{
       "description" => "Lunch",

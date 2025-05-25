@@ -10,6 +10,9 @@ defmodule QuentaWeb.UserLive do
   def render(assigns) do
     ~H"""
     <p>Hello {@user.name}</p>
+    <p>
+      Would you like to <.link href={~p"/expenses/new"} class="text-blue-500 hover:underline">add an expense</.link>?
+    </p>
     """
   end
 end
