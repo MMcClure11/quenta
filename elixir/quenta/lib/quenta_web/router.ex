@@ -18,6 +18,7 @@ defmodule QuentaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/users/:user_id", UserLive
   end
 
   # Other scopes may use custom stacks.
