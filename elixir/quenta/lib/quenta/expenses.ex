@@ -3,14 +3,11 @@ defmodule Quenta.Expenses do
   alias Quenta.Expenses.Expense
 
   def change_expense(expense, attrs) do
-    expense
-    |> Expense.changeset(attrs)
+    expense |> Expense.changeset(attrs)
   end
 
   def create_expense(attrs) do
-    %Expense{}
-    |> Expense.changeset(attrs)
-    |> Repo.insert()
+    %Expense{} |> Expense.changeset(attrs) |> Repo.insert()
   end
 
   def list_expenses do

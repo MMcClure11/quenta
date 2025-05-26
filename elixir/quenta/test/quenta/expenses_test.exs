@@ -10,7 +10,7 @@ defmodule Quenta.ExpensesTest do
     expense = %Quenta.Expenses.Expense{
       id: 1,
       description: "Test Expense",
-      amount_cents: 1000,
+      amount_dollars: 10.00,
       date: ~D[2023-10-01],
       user_id: 1
     }
@@ -24,7 +24,7 @@ defmodule Quenta.ExpensesTest do
     expense = %Quenta.Expenses.Expense{
       id: 1,
       description: "Test Expense",
-      amount_cents: 1000,
+      amount_dollars: 10.00,
       date: ~D[2023-10-01],
       user_id: 1
     }
@@ -37,7 +37,7 @@ defmodule Quenta.ExpensesTest do
   test "create_expense/1 creates a new expense" do
     params = %{
       "description" => "Lunch",
-      "amount_cents" => 1500,
+      "amount_dollars" => 15.00,
       "date" => ~D[2023-10-01],
       "user_id" => 1
     }
@@ -59,7 +59,7 @@ defmodule Quenta.ExpensesTest do
 
     assert {:error, changeset} = Expenses.create_expense(params)
     assert changeset.valid? == false
-    assert changeset.errors[:amount_cents] != nil
+    assert changeset.errors[:amount_dollars] != nil
   end
 
   test "list_expenses/0 returns an empty list when no expenses exist" do
@@ -70,7 +70,7 @@ defmodule Quenta.ExpensesTest do
     # Create an expense to test listing
     params = %{
       "description" => "Coffee",
-      "amount_cents" => 500,
+      "amount_dollars" => 5,
       "date" => ~D[2023-10-02],
       "user_id" => 1
     }
