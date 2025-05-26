@@ -15,6 +15,10 @@ defmodule Quenta.Counter do
     GenServer.cast(pid, :increment)
   end
 
+  def super_boost(multiplier, pid \\ __MODULE__) do
+    GenServer.cast(pid, {:multiply, multiplier})
+  end
+
   def decrement(pid \\ __MODULE__) do
     GenServer.cast(pid, :decrement)
   end
@@ -32,6 +36,12 @@ defmodule Quenta.Counter do
 
   def handle_cast(:increment, state) do
     next_value = state + 1
+    broadcast_update(next_value)
+    {:noreply, next_value}
+  end
+
+  def handle_cast({:multiply, multiplier}, state) do
+    next_value = state * multiplier
     broadcast_update(next_value)
     {:noreply, next_value}
   end

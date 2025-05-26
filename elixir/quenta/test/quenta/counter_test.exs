@@ -7,19 +7,25 @@ defmodule Quenta.CounterTest do
   end
 
   test "verify initial value", %{counter: counter} do
-    value = Quenta.Counter.get_value(counter)
-    assert 0 = value
+    assert 0 = Quenta.Counter.get_value(counter)
   end
 
   test "increment", %{counter: counter} do
     Quenta.Counter.increment(counter)
-    value = Quenta.Counter.get_value(counter)
-    assert 1 = value
+    assert 1 = Quenta.Counter.get_value(counter)
+  end
+
+  test "super_boost", %{counter: counter} do
+    Quenta.Counter.increment(counter)
+    assert 1 = Quenta.Counter.get_value(counter)
+    Quenta.Counter.increment(counter)
+    assert 2 = Quenta.Counter.get_value(counter)
+    Quenta.Counter.super_boost(6, counter)
+    assert 12 = Quenta.Counter.get_value(counter)
   end
 
   test "decrement", %{counter: counter} do
     Quenta.Counter.decrement(counter)
-    value = Quenta.Counter.get_value(counter)
-    assert -1 = value
+    assert -1 = Quenta.Counter.get_value(counter)
   end
 end

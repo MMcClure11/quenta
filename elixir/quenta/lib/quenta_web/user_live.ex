@@ -20,6 +20,11 @@ defmodule QuentaWeb.UserLive do
     {:noreply, socket}
   end
 
+  def handle_event("super_boost", _params, socket) do
+    Quenta.Counter.super_boost(27)
+    {:noreply, socket}
+  end
+
   def handle_event("decrement", _params, socket) do
     Quenta.Counter.decrement()
     {:noreply, socket}
@@ -45,6 +50,9 @@ defmodule QuentaWeb.UserLive do
     <div class="flex items-center space-x-4">
       <button phx-click="increment" class="px-4 py-2 bg-blue-500 text-white rounded">
         Increment
+      </button>
+      <button phx-click="super_boost" class="px-4 py-2 bg-purple-500 text-white rounded">
+        Super Boost
       </button>
       <span class="text-lg font-bold">{@counter_value}</span>
       <button phx-click="decrement" class="px-4 py-2 bg-red-500 text-white rounded">Decrement</button>
