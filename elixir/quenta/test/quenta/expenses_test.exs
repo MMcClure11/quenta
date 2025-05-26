@@ -48,6 +48,32 @@ defmodule Quenta.ExpensesTest do
     assert expense.date == ~D[2023-10-01]
   end
 
+  test "create_expense/1 creates a new expense and associated expense_item" do
+    params = %{
+      "description" => "Lunch",
+      "amount_dollars" => 15.00,
+      "date" => ~D[2023-10-01],
+      "user_id" => 1,
+      "expense_items" => [
+        %{
+          description: "Item 1",
+          amount_dollars: 5.00,
+          user_id: 2
+        }
+      ]
+    }
+
+    assert {:ok, expense} = Expenses.create_expense(params)
+    Quenta.Repo.preload(expense, :expense_items)
+    assert expense.description == "Lunch"
+    assert expense.amount_cents == 1500
+    assert expense.date == ~D[2023-10-01]
+    assert [expense_item] = expense.expense_items
+    assert expense_item.description == "Item 1"
+    assert expense_item.amount_cents == 500
+    assert expense_item.user_id == 2
+  end
+
   test "create_expense/1 returns an error when required fields are missing" do
     params = %{
       "description" => "Dinner",

@@ -10,7 +10,7 @@ defmodule Quenta.Expenses.Expense do
 
     belongs_to :user, Quenta.Users.User
 
-    has_many :expense_items, Quenta.ExpenseItems.ExpenseItem
+    has_many :expense_items, Quenta.ExpenseItems.ExpenseItem, on_replace: :delete
 
     timestamps()
   end
@@ -20,6 +20,10 @@ defmodule Quenta.Expenses.Expense do
   def changeset(expense, attrs) do
     expense
     |> cast(attrs, @fields)
+    |> cast_assoc(:expense_items,
+      sort_param: :expense_items_sort,
+      drop_param: :expense_items_drop
+    )
     |> validate_required(@fields)
     |> convert_dollars_to_cents()
     |> validate_number(:amount_cents, greater_than: 0)
