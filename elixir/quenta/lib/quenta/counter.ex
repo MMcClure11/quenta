@@ -5,20 +5,22 @@ defmodule Quenta.Counter do
 
   # Client API
 
-  def start_link(initial_value) do
-    GenServer.start_link(__MODULE__, initial_value, name: __MODULE__)
+  def start_link(opts \\ []) do
+    initial_value = Keyword.get(opts, :initial_value, 0)
+    name = Keyword.get(opts, :name, __MODULE__)
+    GenServer.start_link(__MODULE__, initial_value, name: name)
   end
 
-  def increment do
-    GenServer.cast(__MODULE__, :increment)
+  def increment(pid \\ __MODULE__) do
+    GenServer.cast(pid, :increment)
   end
 
-  def decrement do
-    GenServer.cast(__MODULE__, :decrement)
+  def decrement(pid \\ __MODULE__) do
+    GenServer.cast(pid, :decrement)
   end
 
-  def get_value do
-    GenServer.call(__MODULE__, :get_value)
+  def get_value(pid \\ __MODULE__) do
+    GenServer.call(pid, :get_value)
   end
 
   # Server API

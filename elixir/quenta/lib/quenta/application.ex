@@ -20,7 +20,7 @@ defmodule Quenta.Application do
       QuentaWeb.Endpoint,
 
       # initialize the counter GenServer
-      {Quenta.Counter, 0}
+      {Quenta.Counter, [initial_value: 0]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
