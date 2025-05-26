@@ -1,4 +1,4 @@
-defmodule QuentaWeb.ExpenseLive.New do
+defmodule QuentaWeb.ExpensesLive.New do
   use QuentaWeb, :live_view
 
   alias Quenta.Expenses
@@ -28,7 +28,7 @@ defmodule QuentaWeb.ExpenseLive.New do
         {:noreply,
          socket
          |> put_flash(:info, "Expense created!")
-         |> redirect(to: ~p"/")}
+         |> redirect(to: ~p"/expenses")}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}

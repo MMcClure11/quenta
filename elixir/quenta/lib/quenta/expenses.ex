@@ -10,7 +10,8 @@ defmodule Quenta.Expenses do
     %Expense{} |> Expense.changeset(attrs) |> Repo.insert()
   end
 
-  def list_expenses do
-    Repo.all(Expense)
+  def list_expenses(opts \\ []) do
+    preloads = Keyword.get(opts, :preloads, [])
+    Expense |> Repo.all() |> Repo.preload(preloads)
   end
 end

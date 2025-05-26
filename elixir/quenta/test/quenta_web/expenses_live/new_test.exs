@@ -1,4 +1,4 @@
-defmodule QuentaWeb.ExpenseLive.NewTest do
+defmodule QuentaWeb.ExpensesLive.NewTest do
   use QuentaWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
@@ -26,7 +26,7 @@ defmodule QuentaWeb.ExpenseLive.NewTest do
       }
     })
 
-    assert_redirected(view, ~p"/")
+    assert_redirected(view, ~p"/expenses")
   end
 
   test "displays validation errors", %{conn: conn} do
@@ -72,7 +72,7 @@ defmodule QuentaWeb.ExpenseLive.NewTest do
       }
     })
 
-    assert_redirected(view, ~p"/")
+    assert_redirected(view, ~p"/expenses")
   end
 
   test "displays validation errors for expense items", %{conn: conn} do
