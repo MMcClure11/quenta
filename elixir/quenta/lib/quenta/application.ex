@@ -17,7 +17,10 @@ defmodule Quenta.Application do
       # Start a worker by calling: Quenta.Worker.start_link(arg)
       # {Quenta.Worker, arg},
       # Start to serve requests, typically the last entry
-      QuentaWeb.Endpoint
+      QuentaWeb.Endpoint,
+
+      # initialize the counter GenServer
+      {Quenta.Counter, 0}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
