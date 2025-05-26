@@ -11,14 +11,14 @@ defmodule Quenta.ExpenseItemsTest do
     {:ok, expense} =
       Expenses.create_expense(%{
         "description" => "Office Supplies",
-        "amount_cents" => 2000,
+        "amount_dollars" => 20.00,
         "date" => ~D[2023-10-01],
         "user_id" => 1
       })
 
     params = %{
       "description" => "Giant Mug",
-      "amount_cents" => 1500,
+      "amount_dollars" => 15.00,
       "expense_id" => expense.id,
       "user_id" => 2
     }
@@ -34,21 +34,20 @@ defmodule Quenta.ExpenseItemsTest do
     {:ok, expense} =
       Expenses.create_expense(%{
         "description" => "Office Supplies",
-        "amount_cents" => 2000,
+        "amount_dollars" => 20.00,
         "date" => ~D[2023-10-01],
         "user_id" => 1
       })
 
     params = %{
       "description" => "Giant Mug",
-      # Missing amount_cents
-      "amount_cents" => nil,
+      "amount_dollars" => nil,
       "expense_id" => expense.id,
       "user_id" => 2
     }
 
     assert {:error, changeset} = ExpenseItems.create_expense_item(params)
     assert changeset.valid? == false
-    assert changeset.errors[:amount_cents] != nil
+    assert changeset.errors[:amount_dollars] != nil
   end
 end
