@@ -1,0 +1,63 @@
+# Build artifacts
+_build/
+deps/
+*.ez
+
+# Assets build artifacts
+assets/node_modules/
+priv/static/assets/
+priv/static/cache_manifest.json
+
+# Development files
+.elixir_ls/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+README*
+CHANGELOG*
+LICENSE*
+
+# Logs
+*.log
+erl_crash.dump
+
+# Test files
+test/
+cover/
+
+# Development environment
+.env
+.env.local
+.env.*.local
+
+# Docker itself
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# Deployment specific
+fly.toml
+shell.nix
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
