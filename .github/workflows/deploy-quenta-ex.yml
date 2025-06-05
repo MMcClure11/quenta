@@ -1,0 +1,28 @@
+name: Deploy Quenta.ex
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "elixir/**"
+
+jobs:
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    concurrency: deploy-quenta-ex-group
+
+    steps:
+      - # https://github.com/actions/checkout
+        name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - # https://github.com/superfly/flyctl-actions
+        name: Setup Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@63da3ecc5e2793b98a3f2519b3d75d4f4c11cec2 # master
+
+      - run: flyctl deploy --remote-only ./elixir
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
