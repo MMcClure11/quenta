@@ -19,7 +19,7 @@ defmodule QuentaWeb.Router do
 
     get "/", PageController, :home
     live "/users/:user_id", UserLive
-    live "/expenses/new", ExpensesLive.New
+    live "/users/:user_id/expenses/new", ExpensesLive.New
   end
 
   # Other scopes may use custom stacks.

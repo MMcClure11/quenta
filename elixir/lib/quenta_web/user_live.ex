@@ -117,7 +117,7 @@ defmodule QuentaWeb.UserLive do
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
           <h2 class="text-xl font-semibold">Recent Expenses</h2>
           <.link
-            navigate={~p"/expenses/new"}
+            navigate={~p"/users/#{@user.id}/expenses/new"}
             class="inline-flex items-center gap-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
           >
             <.icon name="hero-plus" class="w-4 h-4" /> Add Expense

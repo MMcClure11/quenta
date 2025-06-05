@@ -25,8 +25,8 @@ defmodule Quenta.Expenses.Expense do
       drop_param: :expense_items_drop
     )
     |> validate_required(@fields)
+    |> validate_number(:amount_dollars, greater_than: 0, less_than_or_equal_to: 21_474_836)
     |> convert_dollars_to_cents()
-    |> validate_number(:amount_cents, greater_than: 0)
     |> assoc_constraint(:user)
   end
 
