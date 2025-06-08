@@ -83,7 +83,6 @@ defmodule QuentaWeb.ExpensesLive.New do
                     type="text"
                     field={@form[:description]}
                     placeholder="Enter expense description..."
-                    class="block w-full rounded-lg bg-slate-700 border text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                   />
                 </div>
 
@@ -105,7 +104,7 @@ defmodule QuentaWeb.ExpensesLive.New do
                       min="0"
                       max="21474836"
                       placeholder="0.00"
-                      class="block w-full pl-7 rounded-lg bg-slate-700 border text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                      class="pl-6"
                     />
                   </div>
                 </div>
@@ -118,9 +117,6 @@ defmodule QuentaWeb.ExpensesLive.New do
                     type="date"
                     field={@form[:date]}
                     value={@form[:date].value || Date.utc_today() |> Date.to_iso8601()}
-                    class={[
-                      "block w-full rounded-lg bg-slate-700 border text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
-                    ]}
                   />
                 </div>
 
@@ -131,22 +127,13 @@ defmodule QuentaWeb.ExpensesLive.New do
                   >
                     Paid By *
                   </label>
-                  <select
+                  <.input
                     id={@form[:user_id].id}
                     name={@form[:user_id].name}
-                    class={[
-                      "block w-full rounded-lg bg-slate-700 border text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
-                    ]}
-                  >
-                    <option value="">Select who paid...</option>
-                    <option
-                      :for={{name, id} <- @user_options}
-                      value={id}
-                      selected={@form[:user_id].value == id}
-                    >
-                      {name}
-                    </option>
-                  </select>
+                    type="select"
+                    options={@user_options}
+                    value={@form[:user_id].value || @user_id}
+                  />
                 </div>
               </div>
             </div>
@@ -207,9 +194,6 @@ defmodule QuentaWeb.ExpensesLive.New do
                           type="text"
                           field={eif[:description]}
                           placeholder="What was purchased?"
-                          class={[
-                            "block w-full rounded-lg bg-slate-600 border text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
-                          ]}
                         />
                       </div>
 
@@ -230,9 +214,7 @@ defmodule QuentaWeb.ExpensesLive.New do
                             step="0.01"
                             min="0"
                             placeholder="0.00"
-                            class={[
-                              "block w-full pl-7 rounded-lg bg-slate-600 border text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
-                            ]}
+                            class="pl-6"
                           />
                         </div>
                       </div>
@@ -244,22 +226,14 @@ defmodule QuentaWeb.ExpensesLive.New do
                         >
                           Bought By *
                         </label>
-                        <select
+                        <.input
                           id={eif[:user_id].id}
                           name={eif[:user_id].name}
-                          class={[
-                            "block w-full rounded-lg bg-slate-600 border text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
-                          ]}
-                        >
-                          <option value="">Select person...</option>
-                          <option
-                            :for={{name, id} <- @user_options}
-                            value={id}
-                            selected={eif[:user_id].value == id}
-                          >
-                            {name}
-                          </option>
-                        </select>
+                          type="select"
+                          options={@user_options}
+                          prompt="Select person…"
+                          value={@form[:user_id].value}
+                        />
                       </div>
                     </div>
                   </div>
