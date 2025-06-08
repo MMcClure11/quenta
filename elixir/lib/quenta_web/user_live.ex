@@ -1,8 +1,10 @@
 defmodule QuentaWeb.UserLive do
   use QuentaWeb, :live_view
 
-  alias Quenta.Users
+  import Quenta.Currency
+
   alias Quenta.Expenses
+  alias Quenta.Users
 
   def mount(%{"user_id" => user_id}, _session, socket) do
     user = Users.get_user!(user_id)
@@ -39,12 +41,6 @@ defmodule QuentaWeb.UserLive do
         total - split_amount
       end
     end)
-  end
-
-  defp format_cents_to_dollars(amount_cents) do
-    dollars = amount_cents / 100
-    dollars_with_cents = :erlang.float_to_binary(dollars, decimals: 2)
-    "$#{dollars_with_cents}"
   end
 
   defp format_date(date) do
