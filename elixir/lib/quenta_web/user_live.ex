@@ -17,7 +17,7 @@ defmodule QuentaWeb.UserLive do
       |> assign(:user, user)
       |> assign(:other_user, other_user)
       |> assign(:expenses, expenses)
-      |> assign(:running_total, calculate_running_total(expenses, user.id))
+      |> assign(:running_total_cents, calculate_running_total_cents(expenses, user.id))
 
     {:ok, socket}
   end
@@ -26,10 +26,10 @@ defmodule QuentaWeb.UserLive do
     {:noreply, push_navigate(socket, to: ~p"/")}
   end
 
-  defp calculate_running_total(expenses, current_user_id) do
+  defp calculate_running_total_cents(expenses, current_user_id) do
     Enum.reduce(expenses, 0, fn expense, total ->
       # Divide by 200 to get half in dollars
-      split_amount = expense.amount_cents / 200
+      split_amount = expense.amount_cents / 2
 
       if expense.user_id == current_user_id do
         # Current user paid, so other user owes them
@@ -41,15 +41,10 @@ defmodule QuentaWeb.UserLive do
     end)
   end
 
-  defp format_currency(amount_cents) when is_integer(amount_cents) do
-    amount_cents
-    |> Kernel./(100)
-    |> format_currency()
-  end
-
-  defp format_currency(amount) do
-    :erlang.float_to_binary(amount / 1, decimals: 2)
-    |> then(&"$#{&1}")
+  defp format_cents_to_dollars(amount_cents) do
+    dollars = amount_cents / 100
+    dollars_with_cents = :erlang.float_to_binary(dollars, decimals: 2)
+    "$#{dollars_with_cents}"
   end
 
   defp format_date(date) do
@@ -99,13 +94,13 @@ defmodule QuentaWeb.UserLive do
             <div class="text-center">
               <h2 class="text-lg font-medium text-slate-200 mb-2">Current Balance</h2>
               <div class="text-3xl font-bold">
-                <%= if @running_total >= 0 do %>
+                <%= if @running_total_cents >= 0 do %>
                   <span class="text-green-400">
-                    {@other_user.name} owes you {format_currency(@running_total * 100)}
+                    {@other_user.name} owes you {format_cents_to_dollars(@running_total_cents)}
                   </span>
                 <% else %>
                   <span class="text-red-400">
-                    You owe {@other_user.name} {format_currency(abs(@running_total) * 100)}
+                    You owe {@other_user.name} {format_cents_to_dollars(abs(@running_total_cents))}
                   </span>
                 <% end %>
               </div>
@@ -139,7 +134,7 @@ defmodule QuentaWeb.UserLive do
                   </div>
                   <div class="text-right sm:flex-shrink-0">
                     <div class="font-semibold text-white">
-                      {format_currency(expense.amount_cents)}
+                      {format_cents_to_dollars(expense.amount_cents)}
                     </div>
                     <div class="text-sm text-slate-300 capitalize">
                       Paid by {expense.user.name}
@@ -147,11 +142,11 @@ defmodule QuentaWeb.UserLive do
                     <div class="text-sm mt-1">
                       <%= if expense.user_id == @user.id do %>
                         <span class="text-green-400">
-                          You lent {format_currency(expense.amount_cents / 2)}
+                          You lent {format_cents_to_dollars(expense.amount_cents / 2)}
                         </span>
                       <% else %>
                         <span class="text-red-400">
-                          You owe {format_currency(expense.amount_cents / 2)}
+                          You owe {format_cents_to_dollars(expense.amount_cents / 2)}
                         </span>
                       <% end %>
                     </div>
