@@ -8,32 +8,23 @@ defmodule Quenta.Currency do
 
   ## Examples
 
-      iex> format_cents_to_dollars(1234567.89)
-      "$1,234,567.89"
-
-      iex> format_cents_to_dollars(12345)
-      "$12,345.00"
-
-      iex> format_cents_to_dollars(123.45)
-      "$123.45"
-
-      iex> format_cents_to_dollars(1234567)
-      "$1,234,567.00"
-
-      iex> format_cents_to_dollars(-12345.67)
-      "$-12,345.67"
-
-      iex> format_cents_to_dollars(0)
+      iex> Quenta.Currency.format_cents_to_dollars(0)
       "$0.00"
 
-      iex> format_cents_to_dollars(0.123)
-      "$0.12"
+      iex> Quenta.Currency.format_cents_to_dollars(-2300)
+      "$-23.00"
 
-      iex> format_cents_to_dollars(-0.123)
-      "$-0.12"
+      iex> Quenta.Currency.format_cents_to_dollars(23)
+      "$0.23"
 
-      iex> format_cents_to_dollars(123456789.12345)
-      "$123,456,789.12"
+      iex> Quenta.Currency.format_cents_to_dollars(8_675_309)
+      "$86,753.09"
+
+      iex> Quenta.Currency.format_cents_to_dollars(0.6)
+      "$0.01"
+
+      iex> Quenta.Currency.format_cents_to_dollars(0.3)
+      "$0.00"
   """
   def format_cents_to_dollars(amount_cents) do
     dollars = amount_cents / 100
