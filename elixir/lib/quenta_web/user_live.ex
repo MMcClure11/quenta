@@ -75,7 +75,7 @@ defmodule QuentaWeb.UserLive do
     end
   end
 
-  defp format_expense_balance(expense, current_user) do
+  defp format_expense_balance(expense) do
     cond do
       expense.user_balance > 0 ->
         # Current user owes money
@@ -177,7 +177,7 @@ defmodule QuentaWeb.UserLive do
                       Paid by {expense.user.name}
                     </div>
                     <div class="text-sm mt-1">
-                      <% {label, amount, color_class} = format_expense_balance(expense, @user) %>
+                      <% {label, amount, color_class} = format_expense_balance(expense) %>
                       <span class={color_class}>
                         {label} {amount}
                       </span>
